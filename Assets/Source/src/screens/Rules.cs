@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RulesScreen : MonoBehaviour
-{
+public class Rules : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         // TODO: Load text path from config file and load text from rules file

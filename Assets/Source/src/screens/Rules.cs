@@ -1,14 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Rules : MonoBehaviour {
+    public Button backButton;
     // Start is called before the first frame update
-    void Start() {
-        // TODO: Load text path from config file and load text from rules file
+    public void Start() {
+        Button btn = backButton.GetComponent<Button>();
+		btn.onClick.AddListener(onClickBackButton);
     }
 
-    void onClickBackButton() { 
-        // TODO: Goes Back to Initial Screen
+    public void onClickBackButton() { 
+        SceneManager.LoadScene("Start Menu");
+        Debug.Log ("onClickBackButton() on Rules screen has been pressed!");
     }
 }

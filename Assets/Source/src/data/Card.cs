@@ -1,17 +1,17 @@
-﻿using System;
+﻿using System.Reflection;
+using System;
+using UnityEngine;
 
 /// <summary>
 /// Summary description for Card
 /// </summary>
 public class Card : MonoBehaviour {
-	private string name { get; set; }
+	private string title { get; set; }
 	private string rank { get; set; }
 	private int position { get; set; }
 	private string imagePath { get; set; }
 	private bool is_sp { get; set; }
 	private CardAttributes attributes { get; set; }
-
-	
 
 	public Card()
 	{
@@ -20,7 +20,7 @@ public class Card : MonoBehaviour {
 		this.position = 0;
 		this.imagePath = "";
 		this.is_sp = false;
-		this.attributes = new CardClassAttributes();
+		this.attributes = new CardAttributes();
 	}
 
 	private class CardAttributes {
@@ -29,7 +29,7 @@ public class Card : MonoBehaviour {
 		private int bootySize { get; set; }
 		private int careerTime { get; set; }
 		private int perfCredits { get; set; }
-		private float kinkiness { get; set; }
+		private double kinkiness { get; set; }
 
 		public CardAttributes() {
 			this.breastSizeCup = "";
@@ -40,5 +40,4 @@ public class Card : MonoBehaviour {
 			this.kinkiness = 0.0;
 		}
 	}
-	
 }

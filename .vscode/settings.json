@@ -1,5 +1,17 @@
 {
     "files.exclude": {
-        "**/*.meta": true
+        "**/.git": true,
+        "**/.DS_Store": true,
+        "**/*.meta": true,
+        "**/*.*.meta": true,
+        "**/*.unityproj": true,
+        "**/*.mat": true,
+        "**/*.fbx": true,
+        "**/*.FBX": true,
+        "**/*.tga": true,
+        "**/*.cubemap": true,
+        "**/Library": true,
+        "**/ProjectSettings": true,
+        "**/Temp": true
     }
 }

@@ -2,29 +2,44 @@
 using System;
 using UnityEngine;
 
-/// <summary>
-/// Summary description for Card
-/// </summary>
 public class Card : MonoBehaviour {
 	private string title { get; set; }
-	private string rank { get; set; }
+	private char rank { get; set; }
 	private int position { get; set; }
 	private string imagePath { get; set; }
-	private bool is_sp { get; set; }
+	private bool isSuperTrunfo { get; set; }
 	private CardAttributes attributes { get; set; }
 
 	public Card()
 	{
-		this.name = "";
-		this.rank = "";
-		this.position = 0;
-		this.imagePath = "";
-		this.is_sp = false;
-		this.attributes = new CardAttributes();
+		this.title = title;
+		this.rank = rank;
+		this.position = position;
+		this.imagePath = imagePath;
+		this.isSuperTrunfo = isSuperTrunfo;
+		this.attributes = null;
 	}
 
-	private class CardAttributes {
-		private string breastSizeCup { get; set; }
+	public void loadCardAttributes (
+		string breastSizeCup,
+		int breastSizeBand,
+		int bootySize,
+		int careerTime,
+		int perfCredits,
+		double kinkiness
+	) {
+		this.attributes = new CardAttributes(
+			breastSizeCup,
+			breastSizeBand,
+			bootySize,
+			careerTime,
+			perfCredits,
+			kinkiness
+		);
+	}
+
+	public class CardAttributes {
+		private char breastSizeCup { get; set; }
 		private int breastSizeBand { get; set; }
 		private int bootySize { get; set; }
 		private int careerTime { get; set; }
@@ -32,12 +47,12 @@ public class Card : MonoBehaviour {
 		private double kinkiness { get; set; }
 
 		public CardAttributes() {
-			this.breastSizeCup = "";
-			this.breastSizeBand = 0;
-			this.bootySize = 0;
-			this.careerTime = 0;
-			this.perfCredits = 0;
-			this.kinkiness = 0.0;
+			this.breastSizeCup = breastSizeCup;
+			this.breastSizeBand = breastSizeBand;
+			this.bootySize = bootySize;
+			this.careerTime = careerTime;
+			this.perfCredits = perfCredits;
+			this.kinkiness = kinkiness;
 		}
 	}
 }

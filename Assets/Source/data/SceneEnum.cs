@@ -1,5 +1,6 @@
+using UnityEngine;
 
-public class SceneEnum {
+public class SceneIndex {
     
     public enum Scene{
         INITIAL,

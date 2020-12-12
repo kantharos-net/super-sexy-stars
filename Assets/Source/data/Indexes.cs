@@ -20,6 +20,7 @@ public class Indexes {
     }
 
     public enum Players{
+        NONE,
         PLAYER,
         COM
     }

@@ -1,17 +1,17 @@
 using System.Linq;
 using System;
-using List;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Log : MonoBehaviour {
 	private List<string> logList { get; set; }
 
 	public Log()
 	{
-		this.logList = new ArrayList<string>();
+		this.logList = new List<string>();
 	}
 
-	public addLogEntry(string logEntry) {
-		this.logList.append(logEntry);
+	public void addLogEntry(string logEntry) {
+		this.logList.Append(logEntry);
 	}
 }

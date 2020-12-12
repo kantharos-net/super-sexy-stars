@@ -1,14 +1,17 @@
-﻿using System.Reflection;
-using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Card : MonoBehaviour {
-	private string title { get; set; }
-	private char rank { get; set; }
-	private int position { get; set; }
-	private string imagePath { get; set; }
-	private bool isSuperTrunfo { get; set; }
-	private CardAttributes attributes { get; set; }
+	public string title { get; set; }
+	public string rank { get; set; }
+	public int position { get; set; }
+	public string imagePath { get; set; }
+	public bool isSuperTrunfo { get; set; }
+	public char breastSizeCup { get; set; }
+	public int breastSizeBand { get; set; }
+	public int bootySize { get; set; }
+	public int careerTime { get; set; }
+	public int performerCredits { get; set; }
+	public double kinkiness { get; set; }
 
 	public Card()
 	{
@@ -17,42 +20,11 @@ public class Card : MonoBehaviour {
 		this.position = position;
 		this.imagePath = imagePath;
 		this.isSuperTrunfo = isSuperTrunfo;
-		this.attributes = null;
-	}
-
-	public void loadCardAttributes (
-		string breastSizeCup,
-		int breastSizeBand,
-		int bootySize,
-		int careerTime,
-		int perfCredits,
-		double kinkiness
-	) {
-		this.attributes = new CardAttributes(
-			breastSizeCup,
-			breastSizeBand,
-			bootySize,
-			careerTime,
-			perfCredits,
-			kinkiness
-		);
-	}
-
-	public class CardAttributes {
-		private char breastSizeCup { get; set; }
-		private int breastSizeBand { get; set; }
-		private int bootySize { get; set; }
-		private int careerTime { get; set; }
-		private int perfCredits { get; set; }
-		private double kinkiness { get; set; }
-
-		public CardAttributes() {
-			this.breastSizeCup = breastSizeCup;
-			this.breastSizeBand = breastSizeBand;
-			this.bootySize = bootySize;
-			this.careerTime = careerTime;
-			this.perfCredits = perfCredits;
-			this.kinkiness = kinkiness;
-		}
+		this.breastSizeCup = breastSizeCup;
+		this.breastSizeBand = breastSizeBand;
+		this.bootySize = bootySize;
+		this.careerTime = careerTime;
+		this.performerCredits = performerCredits;
+		this.kinkiness = kinkiness;
 	}
 }

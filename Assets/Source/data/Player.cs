@@ -1,14 +1,13 @@
-using System;
-using List;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
-	private string name { get; set; }
-	private List<Card> hand { get; set; }
+	private string playerName { get; set; }
+	private List<Card> playerHand { get; set; }
 
 	public Player(string name, List<Card> hand)
 	{
-		this.name = name;
-		this.hand = hand;
+		this.playerName = name;
+		this.playerHand = hand;
 	}
 }

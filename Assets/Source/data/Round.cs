@@ -1,40 +1,39 @@
-using System.Linq.Expressions;
-using System;
 using UnityEngine;
-using Indexes;
 
 public class Round : MonoBehaviour {
 	private Card playerCard;
     private Card comCard;
     private Indexes.Players currentPlayer;
 
-	public Round(Card playerCard, Card ComCard, Indexes.Players currentPlayer)
+	public Round(Card playerCard, Card comCard, Indexes.Players currentPlayer)
 	{
-		this.playerCard = playerCard;
         this.comCard = comCard;
+		this.playerCard = playerCard;
         this.currentPlayer = currentPlayer;
 	}
 
     (Indexes.RoundResult, Indexes.Players) attributeComparison(Indexes.Attributes selectedAttribute) {
+        Indexes.RoundResult result = 0;
+        Indexes.Players winner = 0;
         switch (selectedAttribute)
         {
-            case GameIndexes.Attributes.SUPER_TRUNFO:
-                (Indexes.RoundResult result, Indexes.Players winner) = comparisonSuperTrunfo();
+            case Indexes.Attributes.SUPER_TRUNFO:
+                (result, winner) = comparisonSuperTrunfo();
                 break;
-            case GameIndexes.Attributes.BREAST_SIZE:
-                (Indexes.RoundResult result, Indexes.Players winner) = comparisonBreastSize();
+            case Indexes.Attributes.BREAST_SIZE:
+                (result, winner) = comparisonBreastSize();
                 break;
-            case GameIndexes.Attributes.BOOTY_SIZE:
-                (Indexes.RoundResult result, Indexes.Players winner) = comparisonBootySize();
+            case Indexes.Attributes.BOOTY_SIZE:
+                (result, winner) = comparisonBootySize();
                 break;
-            case GameIndexes.Attributes.CAREER_TIME:
-                (Indexes.RoundResult result, Indexes.Players winner) = comparisonCareerTime();
+            case Indexes.Attributes.CAREER_TIME:
+                (result, winner) = comparisonCareerTime();
                 break;
-            case GameIndexes.Attributes.PERFORMER_CREDITS:
-                (Indexes.RoundResult result, Indexes.Players winner) = comparisonPerformerCredits();
+            case Indexes.Attributes.PERFORMER_CREDITS:
+                (result, winner) = comparisonPerformerCredits();
                 break;
-            case GameIndexes.Attributes.KINKINESS:
-                (Indexes.RoundResult result, Indexes.Players winner) = comparisonKinkiness();
+            case Indexes.Attributes.KINKINESS:
+                (result, winner) = comparisonKinkiness();
                 break;
         }
         return (result, winner);
@@ -43,8 +42,9 @@ public class Round : MonoBehaviour {
     (Indexes.RoundResult, Indexes.Players) comparisonSuperTrunfo() {
         Indexes.RoundResult result;
         Indexes.Players winner;
+
         if(this.currentPlayer == Indexes.Players.COM) {
-            if(this.playerCard.GetRank() == "A") {
+            if(this.playerCard.rank == "A") {
                 winner = Indexes.Players.PLAYER;
                 result = Indexes.RoundResult.PLAYER;
             } else {
@@ -53,7 +53,7 @@ public class Round : MonoBehaviour {
             }
         }
         else {
-            if(this.comCard.GetRank() == "A") {
+            if(this.comCard.rank == "A") {
                 winner = Indexes.Players.COM;
                 result = Indexes.RoundResult.PLAYER;
             } else {
@@ -66,21 +66,21 @@ public class Round : MonoBehaviour {
     (Indexes.RoundResult, Indexes.Players) comparisonBreastSize(){
         Indexes.RoundResult result;
         Indexes.Players winner;
-        if(this.comCard.GetAttributes().GetBreastSizeCup() > this.playerCard.GetAttributes().GetBreastSizeCup()) {
+        if(this.comCard.breastSizeCup > this.playerCard.breastSizeCup) {
             winner = Indexes.Players.COM;
             result = Indexes.RoundResult.PLAYER;
-        } else if(this.comCard.GetAttributes().GetBreastSizeCup() < this.playerCard.GetAttributes().GetBreastSizeCup()) {
+        } else if(this.comCard.breastSizeCup < this.playerCard.breastSizeCup) {
             winner = Indexes.Players.PLAYER;
             result = Indexes.RoundResult.PLAYER;
         } else {
-            if(this.comCard.GetAttributes().GetBreastSizeBand() > this.playerCard.GetAttributes().GetBreastSizeBand()) {
+            if(this.comCard.breastSizeBand > this.playerCard.breastSizeBand) {
                 winner = Indexes.Players.COM;
                 result = Indexes.RoundResult.PLAYER;
-            } else if(this.comCard.GetAttributes().GetBreastSizeBand() < this.playerCard.GetAttributes().GetBreastSizeBand()) {
+            } else if(this.comCard.breastSizeBand < this.playerCard.breastSizeBand) {
                 winner = Indexes.Players.PLAYER;
                 result = Indexes.RoundResult.PLAYER;
             } else {
-                winner = null;
+                winner = Indexes.Players.NONE;
                 result = Indexes.RoundResult.DRAW;
             }
         }
@@ -89,14 +89,14 @@ public class Round : MonoBehaviour {
     (Indexes.RoundResult, Indexes.Players) comparisonBootySize() {
         Indexes.RoundResult result;
         Indexes.Players winner;
-        if(this.comCard.GetAttributes().GetBootySize() > this.playerCard.GetAttributes().GetBootySize()) {
+        if(this.comCard.bootySize > this.playerCard.bootySize) {
             winner = Indexes.Players.COM;
             result = Indexes.RoundResult.PLAYER;
-        } else if(this.comCard.GetAttributes().GetBootySize() < this.playerCard.GetAttributes().GetBootySize()) {
+        } else if(this.comCard.bootySize < this.playerCard.bootySize) {
             winner = Indexes.Players.PLAYER;
             result = Indexes.RoundResult.PLAYER;
         } else {
-            winner = null;
+            winner = Indexes.Players.NONE;
             result = Indexes.RoundResult.DRAW;
         }
         return (result, winner);
@@ -104,14 +104,14 @@ public class Round : MonoBehaviour {
     (Indexes.RoundResult, Indexes.Players) comparisonCareerTime() {
         Indexes.RoundResult result;
         Indexes.Players winner;
-        if(this.comCard.GetAttributes().GetCareerTime() > this.playerCard.GetAttributes().GetCareerTime()) {
+        if(this.comCard.careerTime > this.playerCard.careerTime) {
             winner = Indexes.Players.COM;
             result = Indexes.RoundResult.PLAYER;
-        } else if(this.comCard.GetAttributes().GetCareerTime() < this.playerCard.GetAttributes().GetCareerTime()) {
+        } else if(this.comCard.careerTime < this.playerCard.careerTime) {
             winner = Indexes.Players.PLAYER;
             result = Indexes.RoundResult.PLAYER;
         } else {
-            winner = null;
+            winner = Indexes.Players.NONE;
             result = Indexes.RoundResult.DRAW;
         }
         return (result, winner);
@@ -119,14 +119,14 @@ public class Round : MonoBehaviour {
     (Indexes.RoundResult, Indexes.Players) comparisonPerformerCredits() {
         Indexes.RoundResult result;
         Indexes.Players winner;
-        if(this.comCard.GetAttributes().GetPerformerCredits() > this.playerCard.GetAttributes().GetPerformerCredits()) {
+        if(this.comCard.performerCredits > this.playerCard.performerCredits) {
             winner = Indexes.Players.COM;
             result = Indexes.RoundResult.PLAYER;
-        } else if(this.comCard.GetAttributes().GetPerformerCredits() < this.playerCard.GetAttributes().GetPerformerCredits()) {
+        } else if(this.comCard.performerCredits < this.playerCard.performerCredits) {
             winner = Indexes.Players.PLAYER;
             result = Indexes.RoundResult.PLAYER;
         } else {
-            winner = null;
+            winner = Indexes.Players.NONE;
             result = Indexes.RoundResult.DRAW;
         }
         return (result, winner);
@@ -134,14 +134,14 @@ public class Round : MonoBehaviour {
     (Indexes.RoundResult, Indexes.Players) comparisonKinkiness() {
         Indexes.RoundResult result;
         Indexes.Players winner;
-        if(this.comCard.GetAttributes().GetKinkiness() > this.playerCard.GetAttributes().GetKinkiness()) {
+        if(this.comCard.kinkiness > this.playerCard.kinkiness) {
             winner = Indexes.Players.COM;
             result = Indexes.RoundResult.PLAYER;
-        } else if(this.comCard.GetAttributes().GetKinkiness() < this.playerCard.GetAttributes().GetKinkiness()) {
+        } else if(this.comCard.kinkiness < this.playerCard.kinkiness) {
             winner = Indexes.Players.PLAYER;
             result = Indexes.RoundResult.PLAYER;
         } else {
-            winner = null;
+            winner = Indexes.Players.NONE;
             result = Indexes.RoundResult.DRAW;
         }
         return (result, winner);

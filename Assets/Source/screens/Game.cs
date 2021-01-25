@@ -62,8 +62,4 @@ public class Game : MonoBehaviour {
         System.Random rnd = new System.Random();
         return (Indexes.Players) rnd.Next(0,2);
     }
-
-    void gameFlow(){
-        
-    }
 }

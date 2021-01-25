@@ -11,7 +11,7 @@ public class Rules : MonoBehaviour {
     }
 
     public void onClickBackButton() { 
-        SceneManager.LoadScene("Start Menu");
+        SceneManager.LoadScene("Initial");
         Debug.Log ("onClickBackButton() on Rules screen has been pressed!");
     }
 }

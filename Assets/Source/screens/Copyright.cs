@@ -11,7 +11,7 @@ public class Copyright : MonoBehaviour {
     }
 
     public void onClickBackButton() { 
-        SceneManager.LoadScene("Start Menu");
-        Debug.Log ("onClickBackButton() on Rules screen has been pressed!");
+        SceneManager.LoadScene("Initial");
+        Debug.Log ("onClickBackButton() on Copyright screen has been pressed!");
     }
 }
